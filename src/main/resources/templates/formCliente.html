@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>form Cliente</title>
+</head>
+<body>
+	<h1>Inserisci i dati del cliente</h1>
+	<form action="#" th:action="@{/clienti/addCliente}"
+		th:object="${cliente}" method="post">
+		<p>
+			Ragione sociale: <input type="text" th:field="*{ragioneSociale}" />
+		</p>
+
+		<p>
+			Partita iva: <input type="text" th:field="*{partitaIva}" />
+		</p>
+
+		<p>
+			Email: <input type="email" th:field="*{email}" />
+		</p>
+
+		<p>
+			Data inserimento: <input type="date" pattern="yyyy-MM-dd"
+				th:field="*{dataInserimento}" />
+		</p>
+		<p>
+			Data ultimo contatto: <input type="date" pattern="yyyy-MM-dd"
+				th:field="*{dataUltimoContatto}" />
+		</p>
+
+		<p>
+			Fatturato annuale: <input type="text" th:field="*{fatturatoAnnuale}" />
+		</p>
+
+		<p>
+			Pec: <input type="text" th:field="*{pec}" />
+		</p>
+
+		<p>
+			Telefono: <input type="text" th:field="*{telefono}" />
+		</p>
+		<p>
+			Email contatto: <input type="email" th:field="*{emailContatto}" />
+		</p>
+		<p>
+			Nome contatto: <input type="text" th:field="*{nomeContatto}" />
+		</p>
+		<p>
+			Cognome contatto: <input type="text" th:field="*{cognomeContatto}" />
+		</p>
+		<p>
+			Telefono contatto: <input type="text" th:field="*{telefonoContatto}" />
+		</p>
+
+		<div>
+			Tipo cliente: <select name="tipo" th:field="*{tipoCliente}">
+				<option
+					th:each="tipo : ${T(it.epicode.be.epicenergyservice.model.TipoCliente).values()}"
+					th:value="${tipo}" th:text="${tipo}"></option>
+			</select>
+		</div>
+		<br>
+
+		<div th:object="${cliente.sedeLegale}">
+			<h2>Indirizzo sede legale</h2>
+			<p>
+				Via: <input type="text" th:field="*{via}" />
+			</p>
+			<p>
+				Civico: <input type="text" th:field="*{civico}" />
+			</p>
+			<p>
+				Cap: <input type="text" th:field="*{cap}" />
+			</p>
+			<p>
+				Località: <input type="text" th:field="*{localita}" />
+			</p>
+			<div>
+				Comune: <select th:field="*{comune}">
+					<option th:each="comune : ${listaComuni}" th:value="${comune.id}"
+						th:text="${comune.nome}" />
+				</select>
+			</div>
+		</div>
+
+		<div th:object="${cliente.sedeOperativa}">
+			<h2>Indirizzo sede operativa</h2>
+			<p>
+				Via: <input type="text" th:field="*{via}" />
+			</p>
+			<p>
+				Civico: <input type="text" th:field="*{civico}" />
+			</p>
+			<p>
+				Cap: <input type="text" th:field="*{cap}" />
+			</p>
+			<p>
+				Località: <input type="text" th:field="*{localita}" />
+			</p>
+			<div>
+				Comune: <select th:field="*{comune}">
+					<option th:each="comune : ${listaComuni}" th:value="${comune.id}"
+						th:text="${comune.nome}" />
+				</select>
+			</div>
+		</div>
+		<br> <br>
+		<p>
+			<input type="submit" value="Submit" /> <input type="reset"
+				value="Reset" />
+		</p>
+
+
+	</form>
+
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Epic Energy Service- comuni</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{/css/layout.css}" />
+</head>
+<body>
+	<div class="header-menu">Epic Energy Service</div>
+	<div class="header-section">Elenco comuni</div>
+
+	<table width="100%">
+		<thead>
+			<tr>
+				<th class="header">Nome</th>
+				<th class="header">Provincia</th>
+				
+				
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="comune : ${listaComuni}">
+				<td th:text="${comune.nome}"></td>
+				<td th:text="${comune.provincia.nome + ' ' + comune.provincia.sigla}"></td>
+				
+				<td><a th:href="@{/comuni/mostraformaggiorna/{id}(id=${comune.id})}">Aggiorna</a></td>
+				
+			</tr>
+		</tbody>
+	</table>
+	   <div class="link-home"><a href="/comuni/mostraformaggiungi">Aggiungi comune</a></div>
+	  
+	    <div class="link-home"><a href="/">Torna alla Home</a></div>
+	<div class="footer">Powered by Epicode School</div>
+</body>
+</html>

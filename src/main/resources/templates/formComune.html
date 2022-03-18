@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>form comune</title>
+</head>
+<body>
+	<h1>Inserisci un comune</h1>
+	<form action="#" th:action="@{/comuni/aggiungicomune}"
+		th:object="${comune}" method="post">
+		<p>
+			Nome: <input type="text" th:field="*{nome}" />
+		</p>
+
+		<div>
+			Provincia: <select th:field="*{provincia}">
+				<option th:each="provincia : ${listaProvince}"
+					th:value="${provincia.id}" th:text="${provincia.nome}" />
+			</select>
+		</div>
+
+		<p>
+			<input type="submit" value="Submit" /> <input type="reset"
+				value="Reset" />
+		</p>
+
+	</form>
+
+</body>
+</html>

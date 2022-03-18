@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>form provincia</title>
+</head>
+<body>
+	<h1>Inserisci una provincia</h1>
+	<form action="#" th:action="@{/province/aggiungiprovincia}"
+		th:object="${provincia}" method="post">
+		<p>
+			Nome: <input type="text" th:field="*{nome}" />
+		</p>
+		<p>
+			Sigla: <input type="text" th:field="*{sigla}" />
+		</p>
+		<p>
+			Regione: <input type="text" th:field="*{regione}" />
+		</p>
+
+
+		<p>
+			<input type="submit" value="Submit" /> <input type="reset"
+				value="Reset" />
+		</p>
+
+	</form>
+
+</body>
+</html>

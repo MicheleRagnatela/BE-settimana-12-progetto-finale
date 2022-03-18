@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Aggiorna indirizzo</title>
+</head>
+<body>
+	<h1>Aggiorna un indirizzo</h1>
+	<form action="#" th:action="@{/indirizzi/aggiornaindirizzo/{id}(id=${indirizzo.id})}"
+		th:object="${indirizzo}" method="post">
+		<p>
+			Via: <input type="text" th:field="*{via}" />
+		</p>
+
+		<p>
+			Civico: <input type="text" th:field="*{civico}" />
+		</p>
+
+		<p>
+			Cap: <input type="text" th:field="*{cap}" />
+		</p>
+
+		<p>
+			Località: <input type="text" th:field="*{localita}" />
+		</p>
+		
+		<div>
+			Comune: <select th:field="*{comune}">
+				<option th:each="comune : ${listaComuni}"
+					th:value="${comune.id}"
+					th:text="${comune.nome}" />
+			</select>
+		</div>
+			
+			<p>
+			<input type="submit" value="Submit" /> <input type="reset"
+				value="Reset" />
+		</p>
+
+	</form>
+</body>
+</html>

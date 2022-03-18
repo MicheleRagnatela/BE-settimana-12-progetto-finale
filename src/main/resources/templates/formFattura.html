@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>form fattura</title>
+</head>
+<body>
+	<h1>Inserisci una fattura</h1>
+	<form action="#" th:action="@{/fatture/aggiungifattura}"
+		th:object="${fattura}" method="post">
+		<p>
+			Numero: <input type="text" th:field="*{numero}" />
+		</p>
+
+		<p>
+			Anno: <input type="text" th:field="*{anno}" />
+		</p>
+
+		<p>
+			Data: <input type="date" pattern="yyyy-MM-dd" th:field="*{data}" />
+		</p>
+
+		<p>
+			Importo: <input type="text" th:field="*{importo}" />
+		</p>
+		<div>
+			Stato fattura: <select th:field="*{statoFattura}">
+				<option th:each="statoFattura : ${listaStati}"
+					th:value="${statoFattura.id}" th:text="${statoFattura.nome}" />
+			</select>
+		</div>
+
+
+		<div>
+			Cliente: <select th:field="*{cliente}">
+				<option th:each="cliente : ${listaClienti}" th:value="${cliente.id}"
+					th:text="${cliente.ragioneSociale}" />
+			</select>
+		</div>
+
+		<p>
+			<input type="submit" value="Submit" /> <input type="reset"
+				value="Reset" />
+		</p>
+
+
+	</form>
+
+
+</body>
+</html>
