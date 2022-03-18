@@ -46,11 +46,8 @@ public class ClienteController {
 	public ResponseEntity<Cliente> findById(@PathVariable(required = true) Long id) {
 		Optional<Cliente> findById = clienteService.findById(id);
 
-		if (findById.isPresent()) {
-			return new ResponseEntity<>(findById.get(), HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-		}
+		return new ResponseEntity<>(findById.get(), HttpStatus.OK);
+		
 
 	}
 

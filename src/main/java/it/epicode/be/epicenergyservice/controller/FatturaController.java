@@ -47,11 +47,7 @@ public class FatturaController {
 	public ResponseEntity<Fattura> findById(@PathVariable(required = true) Long id) {
 		Optional<Fattura> findById = fatturaService.findById(id);
 
-		if (findById.isPresent()) {
-			return new ResponseEntity<>(findById.get(), HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-		}
+		return new ResponseEntity<>(findById.get(), HttpStatus.OK);
 
 	}
 
@@ -65,8 +61,7 @@ public class FatturaController {
 
 	@GetMapping("/findbystato/{id}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
-	public ResponseEntity<Page<Fattura>> findByStatoFattura(@PathVariable(required = true) Long id ,
-			Pageable pageable) {
+	public ResponseEntity<Page<Fattura>> findByStatoFattura(@PathVariable(required = true) Long id, Pageable pageable) {
 		Page<Fattura> findBy = fatturaService.findByStatoFattura(id, pageable);
 		return new ResponseEntity<>(findBy, HttpStatus.OK);
 
@@ -74,7 +69,9 @@ public class FatturaController {
 
 	@GetMapping("/findbydata/{data}")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
-	public ResponseEntity<Page<Fattura>> findByData(@PathVariable(required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate data, Pageable pageable) {
+	public ResponseEntity<Page<Fattura>> findByData(
+			@PathVariable(required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate data,
+			Pageable pageable) {
 		Page<Fattura> findBy = fatturaService.findByData(data, pageable);
 		return new ResponseEntity<>(findBy, HttpStatus.OK);
 
