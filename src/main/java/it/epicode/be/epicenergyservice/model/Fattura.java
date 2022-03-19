@@ -39,7 +39,7 @@ public class Fattura {
 	private BigDecimal importo;
 	@NotNull(message = "Specificare l' importo")
 	private Integer numero;
-	@OneToOne
+	@ManyToOne
 	private StatoFattura statoFattura;
 	@ManyToOne
 	@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property = "id")
@@ -47,7 +47,7 @@ public class Fattura {
 	@Override
 	public String toString() {
 		return "Fattura [anno=" + anno + ", data=" + data + ", importo=" + importo + ", numero=" + numero
-				+ ", statoFattura=" + statoFattura + "]";
+				+ statoFattura.getNome();
 	}
 	
 	

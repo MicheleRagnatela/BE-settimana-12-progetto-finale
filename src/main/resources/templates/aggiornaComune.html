@@ -14,7 +14,7 @@
 
 		<div>
 			Provincia: <select th:field="*{provincia}">
-				<option th:each="Provincia : ${listaProvince}"
+				<option th:each="provincia : ${listaProvince}"
 					th:value="${provincia.id}"
 					th:text="${provincia.nome}" />
 			</select>

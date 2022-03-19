@@ -34,7 +34,7 @@ public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@NotEmpty(message = "Specificare la ragione sociale")
+	@NotEmpty(message = "pecificare la ragione sociale")
 	private String ragioneSociale;
 	@NotEmpty(message = "Specificare la partitaIva")
 	private String partitaIva;
